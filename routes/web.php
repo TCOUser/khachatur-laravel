@@ -33,6 +33,7 @@ Route::post('/login', [UserController::class, 'postLogin']);
 Route::post('/sign-up', [UserController::class, 'postSignUp']);
 //////////////////////////////////////////////////////////////////////////////
 
+//commit 2 test
 
 Route::get('/gumarum',[UserController::class, 'getGumarum']);
 Route::get('/hanum',[UserController::class, 'getHanum']);
