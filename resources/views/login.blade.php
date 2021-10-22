@@ -8,6 +8,15 @@
     <title>Document</title>
 </head>
 <body>
+
+@if(Session::has('success'))
+    <div>
+        {{Session::get('success')}}
+    </div>
+    @endif
+
+
+
 <form action="/sign-up" method="POST">
     @csrf
     <input type="name" name="name" placeholder="Your Name">

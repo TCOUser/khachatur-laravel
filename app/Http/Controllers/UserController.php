@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -29,8 +29,11 @@ class UserController extends Controller
     public function postSignUp(Request $request)
     {
         $data = $request->only('name', 'email', 'password');
-        dd($data);
+        $user = User::create($data);
+
+        return redirect()->route('login')->with('success', 'You have successfully signuped');
     }
+
 /////////////////////////////////////////////////////////////////
 
     public function getGumarum()
@@ -45,6 +48,7 @@ class UserController extends Controller
         $c = $a['numberOne'] + $b['numberTwo'];
         dd($c);
     }
+
     public function getHanum()
     {
         return view('hanum');
@@ -58,10 +62,10 @@ class UserController extends Controller
         dd($c);
     }
 
-public function getBazmapatkum()
-{
-    return view('bazmapatkum');
-}
+    public function getBazmapatkum()
+    {
+        return view('bazmapatkum');
+    }
 
     public function postBazmapatkum(Request $request)
     {
@@ -70,6 +74,7 @@ public function getBazmapatkum()
         $c = $a['numberOne'] * $b['numberTwo'];
         dd($c);
     }
+
     public function getBajanum()
     {
         return view('bajanum');
@@ -82,4 +87,13 @@ public function getBazmapatkum()
         $c = $a['numberOne'] / $b['numberTwo'];
         dd($c);
     }
+
+    public function getUsers()
+    {
+       $users = User::get();  //collection
+
+       return view('users-list',['users'=>$users]);
+
+    }
+
 }

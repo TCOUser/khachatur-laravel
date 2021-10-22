@@ -25,7 +25,7 @@ use App\Http\Controllers\UserController;
 
 
 //GET METHOD
-Route::get('/login', [UserController::class, 'getLogin']);
+Route::get('/login', [UserController::class, 'getLogin'])->name('login');
 Route::get('/sign-up', [UserController::class, 'getSignUp'])->name('user.signup');
 
 //POST METHOD
@@ -41,10 +41,24 @@ Route::get('/bazmapatkum',[UserController::class, 'getBazmapatkum']);
 Route::get('/bajanum',[UserController::class, 'getBajanum']);
 
 
+Route::get('/users', [UserController::class, 'getUsers'])->name('users.list');
 
 
 
-Route::post('/gumarum',[UserController::class,'postGumarum']);
-Route::post('/hanum',[UserController::class,'postHanum']);
-Route::post('/bazmapatkum',[UserController::class,'postBazmapatkum']);
-Route::post('/bajanum',[UserController::class,'postBajanum']);
+
+//Route::post('/gumarum',[UserController::class,'postGumarum']);
+//Route::post('/hanum',[UserController::class,'postHanum']);
+//Route::post('/bazmapatkum',[UserController::class,'postBazmapatkum']);
+//Route::post('/bajanum',[UserController::class,'postBajanum']);
+//
+//
+//////////
+// route::get('conf',function(){
+//     dd(6);
+//});
+//
+//
+//Route::post('/gumarum',[UserController::class,'postGumarum']);
+//Route::post('/hanum',[UserController::class,'postHanum']);
+
+
