@@ -19,9 +19,12 @@
 
 <form action="/sign-up" method="POST">
     @csrf
-    <input type="name" name="name" placeholder="Your Name">
-    <input type="email" name="email" placeholder="Your Email">
-    <input type="password" name="password" placeholder="Your Password">
+{{--    <input type="name" name="name" placeholder="Your Name">--}}
+{{--    <input type="email" name="email" placeholder="Your Email">--}}
+    <input type="name" name="name" placeholder="product Name">
+    <input type="number" name="price" placeholder="product price">
+
+{{--    <input type="password" name="password" placeholder="Your Password">--}}
     <input type="submit" value="SIGN UP">
 </form>
 </body>

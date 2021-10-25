@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -94,6 +95,21 @@ class UserController extends Controller
 
        return view('users-list',['users'=>$users]);
 
+    }
+    public function getAdmin() {
+        return view('products');
+    }
+    public function postAdmin(Request  $request) {
+        $data = $request->only('product', 'price');
+        $productTable = Product::create($data);
+
+        return redirect()->route('admin')->with('success', 'You have successfully added product');
+    }
+    public function getprodlist() {
+        $products = Product::get(); // heta tali collection
+        return view('product-list', [
+            'products' => $products
+        ]);
     }
 
 }
