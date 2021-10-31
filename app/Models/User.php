@@ -12,8 +12,6 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-//    protected $table= "users";
-
     /**
      * The attributes that are mass assignable.
      *
@@ -32,7 +30,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-
     ];
 
     /**
@@ -41,8 +38,25 @@ class User extends Authenticatable
      * @var array
      */
 
-    public function upperName(){
-        return strtoupper($this->name);
+    /*    public function upperName()
+        {
+            return strtoupper($this->name);
+        }*/
+
+    //get{column}Attribute
+    //accessor
+    public function getNameAttribute ($value)
+    {
+        return ucfirst($value);
     }
+
+    // set{column}Attribute
+    //mutator
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
+
 
 }

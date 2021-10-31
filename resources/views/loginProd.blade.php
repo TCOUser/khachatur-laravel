@@ -1,6 +1,6 @@
 @extends('app.master')
 
-@section('title', 'Login')
+@section('title', 'LoginProd')
 
 @section('content')
 
@@ -8,7 +8,7 @@
 
     @include('includes.messages')
 
-    <form action="/login" method="post">
+    <form action="/loginProd" method="post">
 
         @csrf
 

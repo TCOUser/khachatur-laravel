@@ -8,13 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-<form action="/gumarum" method="post">
-    @csrf
-
-    <input type="number" name="numberOne" placeholder="numberOne">
-    <input type="number" name="numberTwo" placeholder="numberTwe">
-    <input type="submit" value="SIGN UP">
-</form>
-
+<h1>Feed</h1>
 </body>
 </html>

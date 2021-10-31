@@ -1,17 +1,17 @@
 @extends('app.master')
 
-@section('title', 'Login')
+@section('title', 'Sign Up')
 
 @section('content')
 
-
-
     @include('includes.messages')
 
-    <form action="/login" method="post">
-
+    <form action="/signUp" method="post">
         @csrf
 
+        <div>
+            name <input type="text" name="name">
+        </div>
         <div>
             email <input type="email" name="email">
         </div>
@@ -23,16 +23,7 @@
         </div>
     </form>
 
-    <div>
-        Copyright {{ $date }}
-    </div>
-
-    <div>
-        <a href="{{route('user.signup')}}">Sign Up</a>
-    </div>
-
-    @if($status)
-        <button>Create</button>
-    @endif
+    </body>
+    </html>
 
 @endsection
