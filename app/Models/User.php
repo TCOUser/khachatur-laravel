@@ -38,10 +38,10 @@ class User extends Authenticatable
      * @var array
      */
 
-    /*    public function upperName()
-        {
-            return strtoupper($this->name);
-        }*/
+//       public function upperName()
+//        {
+//            return strtoupper($this->name);
+//        }
 
     //get{column}Attribute
     //accessor

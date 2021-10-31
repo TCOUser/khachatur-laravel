@@ -33,6 +33,6 @@ class Product extends Model
 
     public function upperprodName()
     {
-        return strtoupper($this->prodName);
+        return strtoupper($this->Name);
     }
 }
