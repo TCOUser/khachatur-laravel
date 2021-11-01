@@ -29,7 +29,7 @@ use App\Http\Controllers\UserController;
 Route::get('/login', [UserController::class, 'getLogin'])->name('login');;
 Route::post('/login', [UserController::class, 'postLogin']);
 
-Route::get('/signUp', [UserController::class, 'signup'])->name('user.signup');
+Route::get('/signUp', [UserController::class, 'getsignup'])->name('user.signup');
 Route::post('/signUp', [UserController::class, 'postSignUp']);
 
 //Route::get('/login', 'UserController@getLogin' );

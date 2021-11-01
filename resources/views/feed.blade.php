@@ -8,6 +8,20 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Feed</h1>
+<div>
+<h1>Hello {{Auth::user()->name}}</h1>
+</div>
+@foreach($products as $product)
+    <div>
+        <ul>
+            <li>{{$product->name}}</li>
+            <li>{{$product->price}}</li>
+
+        </ul>
+    </div>
+
+@endforeach
+
+
 </body>
 </html>

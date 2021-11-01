@@ -10,28 +10,25 @@ class DashboardController extends Controller
 {
     public function getFeed ()
     {
-        if (!Auth::check()) {
-            return redirect()->route('login')->with('error', 'login exi ape');
-        }
 
-        return view('feed');
+        return view('feed', ['products' =>Auth::user()->products]);
     }
-    public function getProdIn ()
-    {
-        if (!Auth::check()) {
-            return redirect()->route('loginProd')->with('error', 'login exi ape');
-        }
-
-        return view('addProd');
-    }
-    public function getProdsAll ()
-    {
-        if (!Auth::check()) {
-            return redirect()->route('loginProd')->with('error', 'login exi ape');
-        }
-
-        return view('allProds');
-    }
+//    public function getProdIn ()
+//    {
+//        if (!Auth::check()) {
+//            return redirect()->route('loginProd')->with('error', 'login exi ');
+//        }
+//
+//        return view('addProd');
+//    }
+//    public function getProdsAll ()
+//    {
+//        if (!Auth::check()) {
+//            return redirect()->route('loginProd')->with('error', 'login exi ape');
+//        }
+//
+//        return view('allProds');
+//    }
 
 
 }

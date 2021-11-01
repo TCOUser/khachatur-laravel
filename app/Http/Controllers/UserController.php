@@ -9,7 +9,7 @@ use App\Http\Requests\CreateUsersRequest;
 use App\Http\Requests\CreateProductsRequest;
 use Illuminate\Support\Facades\Auth;
 
-class UserController extends Controller
+class   UserController extends Controller
 {
     public function getLogin(){
         return view('login', [

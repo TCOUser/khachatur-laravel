@@ -5,22 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class Product extends Model
+class Category extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'Name',
-        'price',
-        'user_id',
-        'category_id'
-    ];
+        'Name'
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    ];
 
     /**
      * The attributes that should be hidden for serialization.

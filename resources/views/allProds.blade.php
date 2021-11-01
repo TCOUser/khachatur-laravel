@@ -21,6 +21,7 @@
         <ul>
             <li>{{$prod->name}}</li>
             <li>{{$prod->price}}</li>
+            <li>{{$prod->user->name}}</li>
         </ul>
     </div>
 
