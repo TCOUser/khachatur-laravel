@@ -16,12 +16,12 @@
 
 <h1>All products list</h1>
 
-@foreach($prods as $prod)
+@foreach($products as $product)
     <div>
         <ul>
-            <li>{{$prod->name}}</li>
-            <li>{{$prod->price}}</li>
-            <li>{{$prod->user->name}}</li>
+            <li>{{$product->name}}</li>
+            <li>{{$product->price}}</li>
+            <li>{{$product->user->name}}</li>
         </ul>
     </div>
 

@@ -1,12 +1,11 @@
 @extends('app.master')
 
-@section('title', 'Sign Up')
 
 @section('content')
 
     @include('includes.messages')
 
-    <form action="/signUp" method="post">
+    <form action="/signUp" method="post" class="form-control" enctype = "multipart/form-data">
         @csrf
 
         <div>
@@ -17,6 +16,10 @@
         </div>
         <div>
             password <input type="password" name="password">
+
+        </div>
+        <div>
+            file <input type="file" name="img">
         </div>
         <div>
             <input type="submit" value="save">

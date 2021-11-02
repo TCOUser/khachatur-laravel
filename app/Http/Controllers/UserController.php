@@ -29,13 +29,11 @@ class   UserController extends Controller
 
 
     }
-    public function SignUp() {
+    public function getsignUp() {
         return view('signUp');
 
     }
-    public function dd() {
-        dd(1);
-    }
+
     public function postSignUp(CreateUsersRequest $request) {
 
 
@@ -54,6 +52,9 @@ class   UserController extends Controller
 
 
         $user = User::create($data);
+        $imagePath = $data['img']->store('profile_images');
+        $user->img_path = $imagePath;
+        $user->save();
 
         return redirect()->route('login')->with('success', 'You have successfully signed up');
 
@@ -118,6 +119,11 @@ class   UserController extends Controller
         }
 
 
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('logout');
     }
 
 }

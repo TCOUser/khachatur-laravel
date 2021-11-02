@@ -1,3 +1,13 @@
+@extends('app.master')
+
+@section('title', 'Login')
+
+@section('content')
+
+
+
+@include('includes.messages')
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -21,6 +31,12 @@
     </div>
 
 @endforeach
+
+<form action ="/logout" method = "post">
+    @csrf
+    <input type ="submit" value ="Logout">
+
+</form>
 
 
 </body>

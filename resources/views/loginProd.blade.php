@@ -8,7 +8,7 @@
 
     @include('includes.messages')
 
-    <form action="/loginProd" method="post">
+    <form action="/loginProduct" method="post">
 
         @csrf
 

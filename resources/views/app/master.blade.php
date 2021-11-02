@@ -12,5 +12,11 @@
 <div class="container-fluid">
     @yield('content')
 </div>
+@if(Auth::check())
+<form action ="/logout" method = "post">
+    @csrf
+    <input type ="submit" value ="Logout">
+@endif
+</form>
 </body>
 </html>

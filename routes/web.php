@@ -32,7 +32,7 @@ Route::post('/login', [UserController::class, 'postLogin']);
 Route::get('/signUp', [UserController::class, 'getsignup'])->name('user.signup');
 Route::post('/signUp', [UserController::class, 'postSignUp']);
 
-//Route::get('/login', 'UserController@getLogin' );
+
 
 Route::get('conflict', function(){
     dd("test");
@@ -57,5 +57,7 @@ Route::group(['middleware' => ['loggedIn']], function (){
 
     Route::get('feed', [DashboardController::class, 'getFeed'])->name('dashboard');
 
+
+    Route::post('logout', [DashboardController::class, 'logout']);
 
 });
