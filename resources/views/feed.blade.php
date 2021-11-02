@@ -1,43 +1,17 @@
 @extends('app.master')
 
-@section('title', 'Login')
-
-@section('content')
-
-
-
 @include('includes.messages')
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<div>
-<h1>Hello {{Auth::user()->name}}</h1>
-</div>
+<h1>Welcome {{Auth::user()->name}}</h1>
 @foreach($products as $product)
     <div>
-        <ul>
-            <li>{{$product->name}}</li>
-            <li>{{$product->price}}</li>
-
+        <ul style="list-style: none">
+            <li style="">Id: {{$product->id}}</li>
+            <li>Name: {{$product->name}}</li>
+            <li>User Name: {{$product->user->name}}</li>
+            <li>Price: {{$product->price}}</li>
+            <li>Created At: {{$product->created_at}}</li>
         </ul>
     </div>
-
+    <hr>
 @endforeach
-
-<form action ="/logout" method = "post">
-    @csrf
-    <input type ="submit" value ="Logout">
-
-</form>
-
-
-</body>
-</html>

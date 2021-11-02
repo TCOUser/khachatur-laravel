@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Product extends Model
+class Products extends Model
 {
     use HasFactory;
 
@@ -22,24 +22,5 @@ class Product extends Model
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
-     */
-    protected $hidden = [
 
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-
-
-    public function upperprodName()
-    {
-        return strtoupper($this->Name);
-    }
 }

@@ -4,126 +4,64 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Product;
+use App\Models\products;
 use App\Http\Requests\CreateUsersRequest;
 use App\Http\Requests\CreateProductsRequest;
 use Illuminate\Support\Facades\Auth;
 
-class   UserController extends Controller
+class UserController extends Controller
 {
-    public function getLogin(){
+    public function getLogin()
+    {
         return view('login', [
             'date' => 2021,
-            'status' => true
+            'status' => true,
         ]);
     }
-    public function postLogin(Request $request) {
 
+    public function postLogin(Request $request)
+    {
         $data = $request->only('email', 'password');
 
         if (Auth::attempt($data)) {
-            return redirect()->route('dashboard');
+            return redirect()->back()->with('success', 'You have successfully loged in');
         } else {
             return redirect()->back()->with('error', 'Invalid email or password');
         }
-
-
-    }
-    public function getsignUp() {
-        return view('signUp');
-
     }
 
-    public function postSignUp(CreateUsersRequest $request) {
+    public function getSignUp()
+    {
+        return view('sign-up');
+    }
 
-
-
-        //php artisan make:request CreateUsersRequest
-
-        /*$validated = $request->validate([
-            'name' => 'required|min:3|max:64',
-            'email' => 'required|email',
-            'password' => 'required|min:4'
-        ]);
-        dd($validated);*/
-
-
+    public function postSignUp(CreateUsersRequest $request)
+    {
         $data = $request->validated();
-
-
         $user = User::create($data);
+
         $imagePath = $data['img']->store('profile_images');
         $user->img_path = $imagePath;
         $user->save();
 
-        return redirect()->route('login')->with('success', 'You have successfully signed up');
-
+        return redirect()->route('login')->with('success', 'You have successfully sign up');
     }
+
     public function getUsers()
     {
-        $users = User::get();  //collection
-
+        $users = User::get();                                 //talisa collection
         return view('users-list', [
             'users' => $users
         ]);
     }
 
 
-    public function getaddProd ()
+
+    public function logOut()
     {
-        return view('addProd');
-    }
-    public function postaddprod(CreateProductsRequest $request) {
-
-
-        $data = $request->validated();
-        $data = $request->only('Name', 'price');
-        $data['user_id'] = Auth::user()->id;
-        $prods = Product::create($data);
-        return redirect()->route('allProds')->with('success', 'You have successfully added product');
-
-    }
-    public function getProds()
-    {
-        $prods = Product::get();
-        return view('allProds', [
-            'prods' => Product::where('user_id', Auth::user()->id)->get()
-        ]);
-    }
-    public function getLoginProd ()
-    {
-        return view('loginProd', [
-            'date' => 2021,
-            'status' => true
-        ]);
-    }
-    public function postLoginProd (Request $request) {
-
-        $data = $request->only('email', 'password');
-
-        if (Auth::attempt($data)) {
-            return redirect()->route('dashboardProd');
-        } else {
-            return redirect()->back()->with('error', 'Invalid email or password');
-        }
-    }
-
-    public function getProdsAll (Request $request) {
-
-        $data = $request->only('email', 'password');
-
-        if (Auth::attempt($data)) {
-            return redirect()->route('dashboardAllProds');
-        } else {
-            return redirect()->route('loginProd')->with('error', 'Invalid email or password');
-        }
-
-
-    }
-
-    public function logout(){
         Auth::logout();
-        return redirect()->route('logout');
+        return redirect('login');
     }
+
 
 }

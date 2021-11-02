@@ -1,7 +1,12 @@
 <?php
 
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Middleware\EnsureTokenIsValid;
+use App\Http\Controllers\UserController;
+use Illuminate\Session\Middleware\AuthenticateSession;
+use App\Http\Controllers\CarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,46 +23,43 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-// commit add
-
-Route::get('/home', function (){
+Route::get('/home', function () {
     return view('admin.home');
 });
 
-use App\Http\Controllers\UserController;
-Route::get('/login', [UserController::class, 'getLogin'])->name('login');;
-Route::post('/login', [UserController::class, 'postLogin']);
 
-Route::get('/signUp', [UserController::class, 'getsignup'])->name('user.signup');
-Route::post('/signUp', [UserController::class, 'postSignUp']);
+//Login
+Route::post('/login', [UserController::class, 'postLogin'])->name('login');
+Route::get('/login', [UserController::class, 'getLogin']);
 
-
-
-Route::get('conflict', function(){
-    dd("test");
-
-});
-
-Route::get('/loginProd', [UserController::class, 'getLoginProd'])->name('loginProd');;
-Route::post('/loginProd', [UserController::class, 'postLoginProd']);
-
-//Route::get('allProds', [DashboardController::class, 'getProdsAll'])->name('dashboardAllProds');
-Route::group(['middleware' => ['loggedIn']], function (){
-    Route::get('users', [UserController::class, 'getUsers']);
-    Route::get('feed', [DashboardController::class, 'getFeed']);
-    Route::get('addProd', [DashboardController::class, 'getProdIn'])->name('dashboardProd');
-    Route::get('users-list', [UserController::class, 'getUsers'])->name('user.list');
-
-    Route::get('/addProd', [UserController::class, 'getaddProd'])->name('add.prod');
-    Route::post('/addProd', [UserController::class, 'postaddprod'])->name('add.prod');
-
-    Route::get('/allProds', [UserController::class, 'getProds'])->name('allProds');
-    Route::post('/allProds', [UserController::class, 'getProds']);
-
-    Route::get('feed', [DashboardController::class, 'getFeed'])->name('dashboard');
+//Sign-up
+Route::get('/sign-up', [UserController::class, 'getSignUp'])->name('user.signup');
+Route::post('/sign-up', [UserController::class, 'postSignUp']);
 
 
-    Route::post('logout', [DashboardController::class, 'logout']);
+Route::middleware('auth')->group(function () {
+    //Products
+    Route::get('/products', [ProductsController::class, 'getProducts'])->name('products');
+    Route::post('/products', [ProductsController::class, 'postProducts'])->name('products');;
+    Route::get('/products-list', [ProductsController::class, 'getProductsList'])->name('products.list');
+    Route::post('/products-list', [ProductsController::class, 'postProductsList']);
+    //Feed
+    Route::get('feed', [DashboardController::class, 'getFeed'])->name('feed');
+    //Users-list
+    Route::get('users', [UserController::class, 'getUsers'])->name('users.list');
+
+    //Cars
+    Route::get('/cars', [CarController::class, 'getCars'])->name('cars');
+    Route::post('/cars', [CarController::class, 'postCars']);
+    Route::get('/cars-list', [CarController::class, 'getCarsList'])->name('cars-list');
+    Route::post('/cars-list', [CarController::class, 'postCarsList']);
 
 });
+
+
+
+
+
+Route::post('logout', [UserController::class, 'logOut']);
+
+

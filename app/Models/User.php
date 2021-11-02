@@ -38,10 +38,10 @@ class User extends Authenticatable
      * @var array
      */
 
-//       public function upperName()
-//        {
-//            return strtoupper($this->name);
-//        }
+       public function upperName()
+        {
+            return strtoupper($this->name);
+        }
 
     //get{column}Attribute
     //accessor
@@ -57,7 +57,7 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 public function products(){
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Products::class);
 }
 
 
