@@ -19,7 +19,7 @@
     </div>
     <form action="/products" method="POST" style="display: flex;justify-content: center;">
         @csrf
-        <input type="name" name="name" placeholder="Name">
+        <input type="name" name="name" placeholder="name">
         <input type="number" name="price" placeholder="Price">
         <select name="category_id" id="">
             @foreach($categories as $category)

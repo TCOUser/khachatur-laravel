@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserCreatedEvent;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\products;
@@ -43,6 +44,8 @@ class UserController extends Controller
         $imagePath = $data['img']->store('profile_images');
         $user->img_path = $imagePath;
         $user->save();
+
+        event(new UserCreatedEvent($user));
 
         return redirect()->route('login')->with('success', 'You have successfully sign up');
     }

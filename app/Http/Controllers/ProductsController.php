@@ -30,8 +30,9 @@ class ProductsController extends Controller
     {
         $data = $request->validated();
         $data['user_id'] = Auth::user()->id;
+//        dd($data);
         $products = Products::create($data);
-        return redirect()->route('products-list')->with('success', 'You have successfully saved your product');
+        return redirect()->route('products.list')->with('success', 'You have successfully saved your product');
     }
 
     public function getProductsList()
@@ -47,7 +48,7 @@ class ProductsController extends Controller
     public function postProductsList(Request $request)
     {
 
-        $prods = Products::all();
+        $products = Products::all();
 
         $delProduct = $request->only('id');
 
