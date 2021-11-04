@@ -22,6 +22,13 @@
         <input type="name" name="brand" placeholder="Brand">
         <input type="name" name="color" placeholder="Color">
         <input type="number" name="price" placeholder="Price">
+
+        <select name="category_id" id="">
+            @foreach($categories as $category)
+                <option value="{{$category->id}}">{{$category->name}}</option>
+            @endforeach
+        </select>
+        <input type="file" name="img">
         <input type="submit" value="Save">
     </form>
 </div>

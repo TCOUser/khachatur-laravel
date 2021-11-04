@@ -27,6 +27,8 @@ class CreateCarsRequest extends FormRequest
             'brand'=> 'required|min:3|max:64',
             'color'=> 'required|min:3|max:64',
             'price' => 'required|min:2|max:900000|numeric',
+            'category_id' => 'required|min:1',
+            'img' => 'file|mimes:jpg,png,jpeg|max:2048'
         ];
     }
 }
