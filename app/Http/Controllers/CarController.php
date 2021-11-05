@@ -26,9 +26,10 @@ class CarController extends Controller
     {
         $data = $request->validated();
         $data['user_id'] = Auth::user()->id;
+//        $data['category_id'] = ////////////
         $cars = Car::create($data);
 
-        $imagePath = $data['img']->store('profile_images');
+        $imagePath = $data['img']->store('cars_images');
         $cars->img_path = $imagePath;
         $cars->save();
         return redirect()->route('cars-list')->with('success', 'You have successfully saved your car');

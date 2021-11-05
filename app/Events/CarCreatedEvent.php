@@ -20,9 +20,11 @@ class CarCreatedEvent
      *
      * @return void
      */
+
+    public $user;
     public function __construct(User $user)
     {
-        $this->user = $user;
+        $this->user = $user;  //$this->cars = $cars;
     }
 
     /**

@@ -17,7 +17,7 @@
             <input type="submit" value="Logout">
         </form>
     </div>
-    <form action="/cars" method="POST" style="display: flex;justify-content: center;">
+    <form action="/cars" method="POST" style="display: flex;justify-content: center;" enctype="multipart/form-data">
         @csrf
         <input type="name" name="brand" placeholder="Brand">
         <input type="name" name="color" placeholder="Color">

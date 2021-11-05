@@ -14,7 +14,7 @@ class AddImgPathToCarsTable extends Migration
     public function up()
     {
         Schema::table('cars', function (Blueprint $table) {
-            $table -> string('img_path')->after('user_id');
+            $table -> string('img_path')->after('user_id')->nullable();
         });
     }
 
