@@ -34,7 +34,7 @@ Route::get('/login', [UserController::class, 'getLogin']);
 
 //Sign-up
 Route::get('/sign-up', [UserController::class, 'getSignUp'])->name('user.signup');
-Route::post('/sign-up', [UserController::class, 'postSignUp']);
+Route::post('/sign-up', [UserController::class, 'store']);
 
 
 Route::middleware('auth')->group(function () {
@@ -53,6 +53,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/cars', [CarController::class, 'postCars']);
     Route::get('/cars-list', [CarController::class, 'getCarsList'])->name('cars-list');
     Route::post('/cars-list', [CarController::class, 'postCarsList']);
+    //Puth
+    Route::get('users/edit',[UserController::class, 'edit'])->name('users.edit');
+    Route::put('users',[UserController::class, 'update']);
 
 });
 
