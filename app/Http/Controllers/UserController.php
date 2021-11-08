@@ -72,16 +72,16 @@ class UserController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update(CreateUsersRequest $request)
     {
-     dd($request->all());
+//     dd($request->all());
 
-//     Auth::user()->Update([
-//         'name' => $request->name,
-//         'email' => $request->email,
-//         'password' => $request->password,
-//
-//     ]);
+     Auth::user()->Update([
+         'name' => $request->name,
+         'email' => $request->email,
+         'password' => $request->password,
+
+     ]);
     }
 
 }

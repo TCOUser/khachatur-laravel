@@ -26,6 +26,9 @@
         <div style="display: flex; justify-content: right">
             <a href="{{route('cars')}}" style="text-decoration: none">Go to Cars</a>
         </div>
+{{--        <div style="display: flex; justify-content: right">--}}
+{{--            <a href="{{route('files')}}" style="text-decoration: none">Go to Files</a>--}}
+{{--        </div>--}}
         <br>
     @endif
     <a href="sign-up" style="justify-content: flex-start; margin-left: 20px; text-decoration: none">Go to sign up</a>

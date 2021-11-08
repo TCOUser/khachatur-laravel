@@ -7,7 +7,7 @@ use App\Http\Middleware\EnsureTokenIsValid;
 use App\Http\Controllers\UserController;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use App\Http\Controllers\CarController;
-
+use App\Http\Controllers\FileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,6 +56,12 @@ Route::middleware('auth')->group(function () {
     //Puth
     Route::get('users/edit',[UserController::class, 'edit'])->name('users.edit');
     Route::put('users',[UserController::class, 'update']);
+
+
+
+    Route::get('/files',[FileController::class,'edit'])->name('files.edit');
+    Route::post('/files/list',[FileController::class,'show'])->name('files.list');
+    Route::get('/files/list',[FileController::class,'store'])->name('files.show');
 
 });
 
